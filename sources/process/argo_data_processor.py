@@ -1,7 +1,19 @@
+'''
+Description
+---------------------------
+The class ArgoDataProcessor filters the profiles located in the Labrador Sea within 75 km distance of the AR7W line.
+To calculate the distance, the geographical coordinates are transformed into cartesian coordinates defined by a specified box and rotated with respect to the AR7W line. See 'LabSea_functions_and_variables' for details on the used functions.
+
+The class BathymetryPlotter plots the pre-selected profile locations and the bathymetry to filter graphically profiles within the 1000-isobath.
+'''
+
+# import modules
 import numpy as np
 import matplotlib.pyplot as plt
 import xarray as xr
 from matplotlib.path import Path
+from LabSea_functions_and_variables import ll2km, rotate_point, rotate_point_corr
+from LabSea_functions_and_variables import lat_line_0, lon_line_0, lat_line_1, lon_line_1, lat_line_A, lon_line_A
 
 class ArgoDataProcessor:
     def __init__(self, filename):
